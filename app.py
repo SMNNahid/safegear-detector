@@ -2,7 +2,7 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 import torch
-import cv2
+# import cv2
 
 # ----------------------
 # Page Config
@@ -89,27 +89,27 @@ if mode == "Image Upload":
 # ----------------------
 # Webcam Mode
 # ----------------------
-elif mode == "Webcam":
-    st.write("Click below to start webcam inference")
-    run_webcam = st.button("Start Webcam")
+# elif mode == "Webcam":
+#     st.write("Click below to start webcam inference")
+#     run_webcam = st.button("Start Webcam")
     
-    if run_webcam:
-        cap = cv2.VideoCapture(0)
-        stframe = st.image([])
-        st.write("Press ESC to stop the webcam")
+#     if run_webcam:
+#         cap = cv2.VideoCapture(0)
+#         stframe = st.image([])
+#         st.write("Press ESC to stop the webcam")
 
-        while True:
-            ret, frame = cap.read()
-            if not ret:
-                st.write("Failed to grab frame")
-                break
+#         while True:
+#             ret, frame = cap.read()
+#             if not ret:
+#                 st.write("Failed to grab frame")
+#                 break
 
-            results = model(frame)
-            frame = np.squeeze(results.render())
-            stframe.image(frame, channels="RGB")
+#             results = model(frame)
+#             frame = np.squeeze(results.render())
+#             stframe.image(frame, channels="RGB")
 
-            # Stop condition: ESC key
-            if cv2.waitKey(1) & 0xFF == 27:
-                break
+#             # Stop condition: ESC key
+#             if cv2.waitKey(1) & 0xFF == 27:
+#                 break
 
-        cap.release()
+#         cap.release()
